@@ -1,0 +1,1690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Chen - Research & Development</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Data storyteller theme */
+            --bg-primary: #fafafa;
+            --bg-secondary: #ffffff;
+            --text-primary: #1a202c;
+            --text-secondary: #4a5568;
+            --accent-research: #667eea;
+            --accent-dev: #48bb78;
+            --accent-product: #ed8936;
+            --accent-domain: #9f7aea;
+            --border: #e2e8f0;
+            --focus: #4299e1;
+            --shadow: rgba(0, 0, 0, 0.05);
+            --gradient-1: #667eea;
+            --gradient-2: #f7931e;
+            --gradient-3: #9f7aea;
+            --gradient-4: #00d084;
+            --particle-color: rgba(102, 126, 234, 0.6);
+        }
+
+        /* Alternative themes with motion-friendly colors */
+        .theme-warm {
+            --bg-primary: #fefcf9;
+            --bg-secondary: #ffffff;
+            --text-primary: #2d3748;
+            --text-secondary: #4a5568;
+            --accent-research: #f093fb;
+            --accent-dev: #f5576c;
+            --accent-product: #4facfe;
+            --accent-domain: #43e97b;
+            --gradient-1: #f093fb;
+            --gradient-2: #f5576c;
+            --gradient-3: #4facfe;
+            --particle-color: rgba(240, 147, 251, 0.6);
+        }
+
+        .theme-experimental {
+            --bg-primary: #ffffff;
+            --bg-secondary: #fafafa;
+            --text-primary: #1a202c;
+            --text-secondary: #4a5568;
+            --accent-research: #00d4ff;
+            --accent-dev: #5eead4;
+            --accent-product: #f472b6;
+            --accent-domain: #a78bfa;
+            --gradient-1: #00d4ff;
+            --gradient-2: #5eead4;
+            --gradient-3: #f472b6;
+            --particle-color: rgba(0, 212, 255, 0.6);
+        }
+
+        .theme-sophisticated {
+            --bg-primary: #fdfdfd;
+            --bg-secondary: #ffffff;
+            --text-primary: #2d3748;
+            --text-secondary: #4a5568;
+            --accent-research: #6366f1;
+            --accent-dev: #10b981;
+            --accent-product: #f59e0b;
+            --accent-domain: #8b5cf6;
+            --gradient-1: #6366f1;
+            --gradient-2: #8b5cf6;
+            --gradient-3: #10b981;
+            --particle-color: rgba(99, 102, 241, 0.6);
+        }
+
+        .theme-dataviz {
+            --bg-primary: #f8fafc;
+            --bg-secondary: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --accent-research: #3b82f6;
+            --accent-dev: #059669;
+            --accent-product: #dc2626;
+            --accent-domain: #7c3aed;
+            --gradient-1: #3b82f6;
+            --gradient-2: #7c3aed;
+            --gradient-3: #059669;
+            --particle-color: rgba(59, 130, 246, 0.6);
+        }
+
+        body {
+            font-family: 'Futura', 'Futura PT', 'Trebuchet MS', Arial, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Animated background particles */
+        .particles-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.4;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--particle-color);
+            border-radius: 50%;
+            opacity: 0;
+        }
+
+        /* Ensure content is above particles */
+        header, main, footer {
+            position: relative;
+            z-index: 1;
+        }
+
+        .skip-links {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--accent-research);
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            z-index: 1000;
+            border-radius: 0 0 4px 0;
+        }
+
+        .skip-links:focus {
+            top: 0;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--accent-research);
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            z-index: 1000;
+            border-radius: 0 0 4px 0;
+            margin-left: 200px;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        header {
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 0;
+            box-shadow: 0 1px 3px var(--shadow);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a:focus {
+            color: var(--text-primary);
+            background: var(--bg-primary);
+            outline: 2px solid var(--focus);
+        }
+
+        .nav-links a.active {
+            color: var(--accent-research);
+            font-weight: 500;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--gradient-1), var(--gradient-2), var(--gradient-3));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 8s ease-in-out infinite;
+            background-size: 200% 200%;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .projects-section h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+        }
+
+        .experience-section, .contact-section {
+            margin-top: 5rem;
+            padding-top: 3rem;
+        }
+
+        .experience-section h2, .contact-section h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--text-primary);
+            text-align: center;
+        }
+
+        .experience-intro, .contact-intro {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 3rem auto;
+            line-height: 1.7;
+        }
+
+        .organizations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .org-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            height: 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .org-logo::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--text-secondary);
+            opacity: 0.1;
+            border-radius: 4px;
+            margin: 1rem;
+        }
+
+        .org-logo:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px var(--shadow);
+        }
+
+        .org-logo:hover::before {
+            background: var(--accent-research);
+            opacity: 0.15;
+        }
+
+        /* CSS filters to recolor your PNG logos */
+        .org-logo img {
+            width: 100%;
+            height: auto;
+            max-height: 60px;
+            max-width: 180px;
+            object-fit: contain;
+            /* Convert blue logos to match your text color */
+            filter: brightness(0) saturate(100%) invert(27%) sepia(15%) saturate(1142%) hue-rotate(183deg) brightness(94%) contrast(92%);
+            transition: filter 0.3s ease;
+        }
+
+        .org-logo:hover img {
+            /* Convert to accent color on hover */
+            filter: brightness(0) saturate(100%) invert(51%) sepia(98%) saturate(1706%) hue-rotate(216deg) brightness(97%) contrast(97%);
+        }
+
+        /* Placeholder styling for when logos aren't loaded yet */
+        .org-logo .logo-placeholder {
+            width: 160px;
+            height: 50px;
+            background: linear-gradient(90deg, var(--border) 0%, var(--text-secondary) 50%, var(--border) 100%);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            text-align: center;
+        }
+
+        .contact-section {
+            text-align: center;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .contact-link {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            padding: 1.5rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 2px 4px var(--shadow);
+        }
+
+        .contact-link:hover, .contact-link:focus {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px var(--shadow);
+            outline: 2px solid var(--focus);
+        }
+
+        .contact-method {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .contact-value {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        /* Modal Carousel Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: var(--bg-primary);
+            border-radius: 12px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90vh;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-header {
+            padding: 2rem 2rem 1rem 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .modal-title {
+            font-size: 1.8rem;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-subtitle {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .carousel-slides {
+            display: flex;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            padding: 2rem;
+        }
+
+        .slide-content h4 {
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .slide-content p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .slide-content .highlight-box {
+            background: var(--bg-secondary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-research);
+            margin: 1.5rem 0;
+        }
+
+        .slide-content .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .metric {
+            text-align: center;
+            padding: 1rem;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+        }
+
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--accent-research);
+            display: block;
+        }
+
+        .metric-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem 2rem 2rem 2rem;
+            gap: 1rem;
+        }
+
+        .carousel-btn {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+
+        .carousel-btn:hover, .carousel-btn:focus {
+            background: var(--accent-research);
+            color: white;
+            outline: 2px solid var(--focus);
+        }
+
+        .carousel-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .slide-indicators {
+            display: flex;
+            gap: 0.5rem;
+            margin: 0 1rem;
+        }
+
+        .slide-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--border);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .slide-indicator.active {
+            background: var(--accent-research);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .close-modal:hover, .close-modal:focus {
+            color: var(--text-primary);
+            background: var(--bg-secondary);
+            outline: 2px solid var(--focus);
+        }
+
+        /* Reduced Motion Preferences - WCAG 2.3.3 */
+        @media (prefers-reduced-motion: reduce) {
+            .particle,
+            .hero::before {
+                animation: none;
+            }
+            
+            .filter-tag,
+            .project-card,
+            .carousel-slides,
+            .org-logo,
+            .contact-link {
+                transition: none;
+            }
+            
+            .filter-tag::before {
+                display: none;
+            }
+            
+            .project-card:hover,
+            .project-card:focus-within {
+                transform: none;
+            }
+            
+            .org-logo:hover,
+            .contact-link:hover,
+            .contact-link:focus {
+                transform: none;
+            }
+        }
+
+        .skip-link-inline {
+            display: inline-block;
+            color: var(--accent-research);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--accent-research);
+            border-radius: 20px;
+            transition: all 0.2s;
+        }
+
+        .skip-link-inline:hover,
+        .skip-link-inline:focus {
+            background: var(--accent-research);
+            color: white;
+            outline: 2px solid var(--focus);
+        }
+
+        .filter-controls {
+            background: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 3rem;
+            border: 1px solid var(--border);
+            box-shadow: 0 2px 4px var(--shadow);
+        }
+
+        .filter-group {
+            margin-bottom: 1.5rem;
+            border: none;
+            padding: 0;
+        }
+
+        .filter-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .filter-group legend {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .filter-group:nth-child(1) legend {
+            color: var(--accent-research); /* Research Methods - Blue */
+        }
+
+        .filter-group:nth-child(2) legend {
+            color: var(--accent-dev); /* Tech Stack - Green */
+        }
+
+        .filter-group:nth-child(3) legend {
+            color: var(--accent-domain); /* Domain - Purple */
+        }
+
+        .filter-group:nth-child(4) legend {
+            color: var(--accent-product); /* Problem Type - Orange */
+        }
+
+        .filter-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .filter-tag {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 0.9rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .filter-tag::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .filter-tag:hover::before {
+            left: 100%;
+        }
+
+        .filter-tag:hover,
+        .filter-tag:focus {
+            outline: 2px solid var(--focus);
+            color: var(--text-primary);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px var(--shadow);
+        }
+
+        .filter-tag.active {
+            color: white;
+            border-color: transparent;
+        }
+
+        .filter-tag.research.active { background: var(--accent-research); }
+        .filter-tag.tech.active { background: var(--accent-dev); }
+        .filter-tag.domain.active { background: var(--accent-domain); }
+        .filter-tag.problem.active { background: var(--accent-product); }
+
+        .results-summary {
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: var(--bg-secondary);
+            border-radius: 4px;
+            border: 1px solid var(--border);
+            box-shadow: 0 1px 2px var(--shadow);
+        }
+
+        .results-summary[aria-live="polite"] {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            box-shadow: 0 2px 8px var(--shadow);
+            backdrop-filter: blur(10px);
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 12px;
+            padding: 1px;
+            background: linear-gradient(135deg, var(--gradient-1), var(--gradient-2));
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: subtract;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .project-card:hover,
+        .project-card:focus-within {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px var(--shadow);
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .project-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-tag {
+            font-size: 0.8rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 12px;
+            color: white;
+        }
+
+        .project-tag.research { background: var(--accent-research); }
+        .project-tag.tech { background: var(--accent-dev); }
+        .project-tag.domain { background: var(--accent-domain); }
+        .project-tag.problem { background: var(--accent-product); }
+
+        .project-link {
+            color: var(--accent-research);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .project-link:hover,
+        .project-link:focus {
+            text-decoration: underline;
+            outline: 2px solid var(--focus);
+            border-radius: 2px;
+        }
+
+        .project-card.hidden {
+            display: none;
+        }
+
+        footer {
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border);
+            padding: 2rem 0;
+            margin-top: 4rem;
+            text-align: center;
+            color: var(--text-secondary);
+            box-shadow: 0 -1px 3px var(--shadow);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .filter-options {
+                gap: 0.25rem;
+            }
+            
+            .filter-tag {
+                font-size: 0.8rem;
+                padding: 0.4rem 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="particles-container" id="particles-container" aria-hidden="true"></div>
+    
+    <a href="#main" class="skip-links">Skip to main content</a>
+    <a href="#contact" class="skip-link">Skip to contact</a>
+    
+    <header>
+        <nav role="navigation" aria-label="Main navigation">
+            <div class="logo">Anastasia Hanan</div>
+            <ul class="nav-links">
+                <li><a href="#projects" class="active" aria-current="page">Case Studies</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main">
+        <section class="hero">
+            <h1>Research-Driven Development</h1>
+            <p>Bridging data science, user research, and full-stack development to build systems that solve real problems with evidence-based approaches.</p>
+        </section>
+
+        <section id="projects" class="projects-section">
+            <h2>Case Studies</h2>
+            
+            <div class="filter-controls" role="region" aria-label="Case study filters">
+                <fieldset class="filter-group">
+                    <legend>Research Methods</legend>
+                    <div class="filter-options" role="group" aria-labelledby="research-methods">
+                        <button class="filter-tag research" data-category="research" data-value="statistical-analysis">Statistical Analysis</button>
+                        <button class="filter-tag research" data-category="research" data-value="user-testing">User Testing</button>
+                        <button class="filter-tag research" data-category="research" data-value="ethnographic">Ethnographic Research</button>
+                        <button class="filter-tag research" data-category="research" data-value="experimental-design">Experimental Design</button>
+                        <button class="filter-tag research" data-category="research" data-value="mixed-methods">Mixed Methods</button>
+                    </div>
+                </fieldset>
+
+                <fieldset class="filter-group">
+                    <legend>Tech Stack</legend>
+                    <div class="filter-options" role="group" aria-labelledby="tech-stack">
+                        <button class="filter-tag tech" data-category="tech" data-value="python">Python</button>
+                        <button class="filter-tag tech" data-category="tech" data-value="react">React</button>
+                        <button class="filter-tag tech" data-category="tech" data-value="sql">SQL</button>
+                        <button class="filter-tag tech" data-category="tech" data-value="machine-learning">Machine Learning</button>
+                        <button class="filter-tag tech" data-category="tech" data-value="apis">APIs</button>
+                        <button class="filter-tag tech" data-category="tech" data-value="node">Node.js</button>
+                    </div>
+                </fieldset>
+
+                <fieldset class="filter-group">
+                    <legend>Domain</legend>
+                    <div class="filter-options" role="group" aria-labelledby="domain">
+                        <button class="filter-tag domain" data-category="domain" data-value="fintech">FinTech</button>
+                        <button class="filter-tag domain" data-category="domain" data-value="healthcare">Healthcare</button>
+                        <button class="filter-tag domain" data-category="domain" data-value="ecommerce">E-commerce</button>
+                        <button class="filter-tag domain" data-category="domain" data-value="b2b">B2B SaaS</button>
+                    </div>
+                </fieldset>
+
+                <fieldset class="filter-group">
+                    <legend>Problem Type</legend>
+                    <div class="filter-options" role="group" aria-labelledby="problem-type">
+                        <button class="filter-tag problem" data-category="problem" data-value="optimization">Optimization</button>
+                        <button class="filter-tag problem" data-category="problem" data-value="prediction">Prediction</button>
+                        <button class="filter-tag problem" data-category="problem" data-value="automation">Automation</button>
+                        <button class="filter-tag problem" data-category="problem" data-value="discovery">Discovery</button>
+                    </div>
+                </fieldset>
+            </div>
+
+            <div class="results-summary" aria-live="polite" id="results-summary">
+                Showing 6 case studies
+            </div>
+
+            <div class="projects-grid" role="region" aria-label="Case study results">
+                <article class="project-card" data-tags="statistical-analysis,python,machine-learning,fintech,prediction">
+                    <h3>Fraud Detection Algorithm Optimization</h3>
+                    <p>Developed a machine learning pipeline that reduced false positives by 40% while maintaining 99.2% fraud detection accuracy. Combined statistical analysis with real-time processing.</p>
+                    <div class="project-tags" aria-label="Project technologies and methods">
+                        <span class="project-tag research">Statistical Analysis</span>
+                        <span class="project-tag tech">Python</span>
+                        <span class="project-tag tech">Machine Learning</span>
+                        <span class="project-tag domain">FinTech</span>
+                        <span class="project-tag problem">Prediction</span>
+                    </div>
+                    <a href="#" class="project-link" onclick="openModal('fraud-detection')" aria-describedby="fraud-detection-desc">
+                        View case study →
+                    </a>
+                    <div id="fraud-detection-desc" class="sr-only">Detailed methodology and results for fraud detection optimization project</div>
+                </article>
+
+                <article class="project-card" data-tags="user-testing,react,node,apis,healthcare,discovery">
+                    <h3>Patient Portal Usability Redesign</h3>
+                    <p>Led end-to-end research and development of a patient portal interface. User testing revealed 60% improvement in task completion rates.</p>
+                    <div class="project-tags" aria-label="Project technologies and methods">
+                        <span class="project-tag research">User Testing</span>
+                        <span class="project-tag tech">React</span>
+                        <span class="project-tag tech">Node.js</span>
+                        <span class="project-tag tech">APIs</span>
+                        <span class="project-tag domain">Healthcare</span>
+                        <span class="project-tag problem">Discovery</span>
+                    </div>
+                    <a href="#" class="project-link" onclick="openModal('patient-portal')">
+                        View case study →
+                    </a>
+                </article>
+
+                <article class="project-card" data-tags="experimental-design,sql,python,ecommerce,optimization">
+                    <h3>A/B Testing Platform Architecture</h3>
+                    <p>Built a scalable experimentation platform that enabled product teams to run concurrent tests with statistical rigor. Supported 50+ experiments simultaneously.</p>
+                    <div class="project-tags" aria-label="Project technologies and methods">
+                        <span class="project-tag research">Experimental Design</span>
+                        <span class="project-tag tech">SQL</span>
+                        <span class="project-tag tech">Python</span>
+                        <span class="project-tag domain">E-commerce</span>
+                        <span class="project-tag problem">Optimization</span>
+                    </div>
+                    <a href="#" class="project-link" onclick="openModal('ab-testing')">
+                        View case study →
+                    </a>
+                </article>
+
+                <article class="project-card" data-tags="ethnographic,mixed-methods,react,b2b,discovery">
+                    <h3>Enterprise Workflow Analysis</h3>
+                    <p>Conducted in-depth ethnographic research to understand complex B2B workflows, leading to a complete system redesign that reduced task time by 35%.</p>
+                    <div class="project-tags" aria-label="Project technologies and methods">
+                        <span class="project-tag research">Ethnographic Research</span>
+                        <span class="project-tag research">Mixed Methods</span>
+                        <span class="project-tag tech">React</span>
+                        <span class="project-tag domain">B2B SaaS</span>
+                        <span class="project-tag problem">Discovery</span>
+                    </div>
+                    <a href="#" class="project-link" onclick="openModal('enterprise-workflow')">
+                        View case study →
+                    </a>
+                </article>
+
+                <article class="project-card" data-tags="statistical-analysis,python,sql,machine-learning,healthcare,automation">
+                    <h3>Clinical Data Pipeline Automation</h3>
+                    <p>Automated the processing of clinical trial data, reducing manual work from 40 hours to 2 hours per study while improving data quality and compliance.</p>
+                    <div class="project-tags" aria-label="Project technologies and methods">
+                        <span class="project-tag research">Statistical Analysis</span>
+                        <span class="project-tag tech">Python</span>
+                        <span class="project-tag tech">SQL</span>
+                        <span class="project-tag tech">Machine Learning</span>
+                        <span class="project-tag domain">Healthcare</span>
+                        <span class="project-tag problem">Automation</span>
+                    </div>
+                    <a href="#" class="project-link" onclick="openModal('clinical-data')">
+                        View case study →
+                    </a>
+                </article>
+
+                <article class="project-card" data-tags="user-testing,experimental-design,react,node,fintech,optimization">
+                    <h3>Investment App Onboarding Optimization</h3>
+                    <p>Combined user testing with multivariate experiments to optimize the onboarding flow, resulting in 45% increase in completion rates and improved user satisfaction.</p>
+                    <div class="project-tags" aria-label="Project technologies and methods">
+                        <span class="project-tag research">User Testing</span>
+                        <span class="project-tag research">Experimental Design</span>
+                        <span class="project-tag tech">React</span>
+                        <span class="project-tag tech">Node.js</span>
+                        <span class="project-tag domain">FinTech</span>
+                        <span class="project-tag problem">Optimization</span>
+                    </div>
+                    <a href="#" class="project-link" onclick="openModal('investment-app')">
+                        View case study →
+                    </a>
+                </article>
+            </div>
+        </section>
+
+        <section id="experience" class="experience-section">
+            <h2>Experience</h2>
+            <p class="experience-intro">I've had the privilege of working with leading organizations across technology, government, and social impact sectors, applying research-driven approaches to solve complex problems.</p>
+            
+            <a href="#contact" class="skip-link-inline" aria-label="Skip past organization logos to contact section">Skip to contact →</a>
+            
+            <div class="organizations-grid">
+                <div class="org-logo" aria-label="U.S. Department of Veterans Affairs">
+                    <!-- Replace this placeholder with: <img src="va-logo.png" alt="U.S. Department of Veterans Affairs"> -->
+                    <div class="logo-placeholder">VA Logo</div>
+                </div>
+
+                <div class="org-logo" aria-label="U.S. Digital Service">
+                    <!-- Replace this placeholder with: <img src="usds-logo.png" alt="U.S. Digital Service"> -->
+                    <div class="logo-placeholder">USDS Logo</div>
+                </div>
+
+                <div class="org-logo" aria-label="Quartz">
+                    <!-- Replace this placeholder with: <img src="quartz-logo.png" alt="Quartz"> -->
+                    <div class="logo-placeholder">Quartz Logo</div>
+                </div>
+
+                <div class="org-logo" aria-label="Punch List">
+                    <!-- Replace this placeholder with: <img src="punchlist-logo.png" alt="Punch List"> -->
+                    <div class="logo-placeholder">Punch List Logo</div>
+                </div>
+
+                <div class="org-logo" aria-label="MobileCoin">
+                    <!-- Replace this placeholder with: <img src="mobilecoin-logo.png" alt="MobileCoin"> -->
+                    <div class="logo-placeholder">MobileCoin Logo</div>
+                </div>
+
+                <div class="org-logo" aria-label="LinkedIn">
+                    <!-- Replace this placeholder with: <img src="linkedin-logo.png" alt="LinkedIn"> -->
+                    <div class="logo-placeholder">LinkedIn Logo</div>
+                </div>
+
+                <div class="org-logo" aria-label="HiOperator">
+                    <!-- Replace this placeholder with: <img src="hioperator-logo.png" alt="HiOperator"> -->
+                    <div class="logo-placeholder">HiOperator Logo</div>
+                </div>
+
+                <div class="org-logo" aria-label="Environmental Protection Agency">
+                    <!-- Replace this placeholder with: <img src="epa-logo.png" alt="Environmental Protection Agency"> -->
+                    <div class="logo-placeholder">EPA Logo</div>
+                </div>
+
+                <div class="org-logo" aria-label="The Climate Corporation">
+                    <!-- Replace this placeholder with: <img src="climate-corp-logo.png" alt="The Climate Corporation"> -->
+                    <div class="logo-placeholder">Climate Corp Logo</div>
+                </div>
+
+                <div class="org-logo" aria-label="Citrine Informatics">
+                    <!-- Replace this placeholder with: <img src="citrine-logo.png" alt="Citrine Informatics"> -->
+                    <div class="logo-placeholder">Citrine Logo</div>
+                </div>
+
+                <div class="org-logo" aria-label="California Institute of Technology">
+                    <!-- Replace this placeholder with: <img src="caltech-logo.png" alt="California Institute of Technology"> -->
+                    <div class="logo-placeholder">Caltech Logo</div>
+                </div>
+
+                <div class="org-logo" aria-label="Bill and Melinda Gates Foundation">
+                    <!-- Replace this placeholder with: <img src="gates-foundation-logo.png" alt="Bill and Melinda Gates Foundation"> -->
+                    <div class="logo-placeholder">Gates Foundation Logo</div>
+                </div>
+
+                <div class="org-logo" aria-label="Accenture">
+                    <!-- Replace this placeholder with: <img src="accenture-logo.png" alt="Accenture"> -->
+                    <div class="logo-placeholder">Accenture Logo</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <h2>Let's Connect</h2>
+            <p class="contact-intro">Interested in collaborating on research-driven projects that bridge data science and human-centered design? I'd love to hear from you.</p>
+            
+            <div class="contact-info">
+                <a href="mailto:anastasia@example.com" class="contact-link">
+                    <span class="contact-method">Email</span>
+                    <span class="contact-value">anastasia@example.com</span>
+                </a>
+                <a href="https://linkedin.com/in/anastasiahanan" class="contact-link">
+                    <span class="contact-method">LinkedIn</span>
+                    <span class="contact-value">linkedin.com/in/anastasiahanan</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal for Case Study Carousel -->
+    <div id="case-study-modal" class="modal" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal()" aria-label="Close case study">&times;</button>
+            
+            <div class="modal-header">
+                <h3 id="modal-title" class="modal-title">Case Study Title</h3>
+                <p class="modal-subtitle">Project overview and context</p>
+            </div>
+
+            <div class="carousel-container">
+                <div class="carousel-slides" id="carousel-slides">
+                    <!-- Slides will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <div class="carousel-nav">
+                <button class="carousel-btn" id="prev-btn" onclick="changeSlide(-1)" aria-label="Previous slide">← Previous</button>
+                <div class="slide-indicators" id="slide-indicators">
+                    <!-- Indicators will be populated by JavaScript -->
+                </div>
+                <button class="carousel-btn" id="next-btn" onclick="changeSlide(1)" aria-label="Next slide">Next →</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Anastasia Hanan. Built with accessibility and inclusion in mind.</p>
+    </footer>
+
+    <script>
+        class AccessibleProjectFilter {
+            constructor() {
+                this.activeFilters = new Set();
+                this.projects = document.querySelectorAll('.project-card');
+                this.filterButtons = document.querySelectorAll('.filter-tag');
+                this.resultsSummary = document.getElementById('results-summary');
+                
+                this.initializeFilters();
+                this.initializeParticles();
+            }
+
+            initializeParticles() {
+                const container = document.getElementById('particles-container');
+                if (!container) return;
+                
+                const particleCount = 30;
+                
+                for (let i = 0; i < particleCount; i++) {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+                    
+                    // Set initial styles
+                    particle.style.position = 'absolute';
+                    particle.style.width = '3px';
+                    particle.style.height = '3px';
+                    particle.style.backgroundColor = 'var(--particle-color)';
+                    particle.style.borderRadius = '50%';
+                    particle.style.opacity = '0';
+                    particle.style.pointerEvents = 'none';
+                    
+                    container.appendChild(particle);
+                    
+                    // Start animation after a random delay
+                    setTimeout(() => this.animateParticle(particle), Math.random() * 5000);
+                }
+                
+                console.log(`Created ${particleCount} particles`);
+            }
+
+            animateParticle(particle) {
+                const container = particle.parentElement;
+                if (!container) return;
+                
+                const containerRect = container.getBoundingClientRect();
+                const duration = 8000 + Math.random() * 12000; // 8-20 seconds
+                
+                // Random starting position
+                const startX = Math.random() * (containerRect.width - 10);
+                const startY = Math.random() * (containerRect.height - 10);
+                const endX = Math.random() * (containerRect.width - 10);
+                const endY = Math.random() * (containerRect.height - 10);
+                
+                // Set starting position
+                particle.style.left = startX + 'px';
+                particle.style.top = startY + 'px';
+                particle.style.opacity = '0';
+                
+                // Fade in
+                requestAnimationFrame(() => {
+                    particle.style.transition = 'opacity 1s ease-in-out';
+                    particle.style.opacity = '0.4';
+                    
+                    // Start movement after fade in
+                    setTimeout(() => {
+                        particle.style.transition = `left ${duration}ms cubic-bezier(0.25, 0.46, 0.45, 0.94), top ${duration}ms cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 2s ease-out`;
+                        particle.style.left = endX + 'px';
+                        particle.style.top = endY + 'px';
+                        particle.style.opacity = '0';
+                    }, 1000);
+                });
+                
+                // Restart animation
+                setTimeout(() => {
+                    this.animateParticle(particle);
+                }, duration + 3000);
+            }
+
+            initializeFilters() {
+                this.filterButtons.forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        this.toggleFilter(e.target);
+                    });
+                    
+                    button.addEventListener('keydown', (e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            this.toggleFilter(e.target);
+                        }
+                    });
+                });
+            }
+
+            toggleFilter(button) {
+                const filterValue = button.dataset.value;
+                
+                if (this.activeFilters.has(filterValue)) {
+                    this.activeFilters.delete(filterValue);
+                    button.classList.remove('active');
+                    button.setAttribute('aria-pressed', 'false');
+                } else {
+                    this.activeFilters.add(filterValue);
+                    button.classList.add('active');
+                    button.setAttribute('aria-pressed', 'true');
+                }
+                
+                this.filterProjects();
+                this.updateResultsSummary();
+            }
+
+            filterProjects() {
+                let visibleCount = 0;
+                
+                this.projects.forEach(project => {
+                    const projectTags = project.dataset.tags.split(',');
+                    const matchesFilters = this.activeFilters.size === 0 || 
+                        Array.from(this.activeFilters).every(filter => projectTags.includes(filter));
+                    
+                    if (matchesFilters) {
+                        project.classList.remove('hidden');
+                        project.setAttribute('aria-hidden', 'false');
+                        visibleCount++;
+                    } else {
+                        project.classList.add('hidden');
+                        project.setAttribute('aria-hidden', 'true');
+                    }
+                });
+                
+                return visibleCount;
+            }
+
+            updateResultsSummary() {
+                const visibleCount = this.filterProjects();
+                const activeFiltersList = Array.from(this.activeFilters);
+                
+                let summaryText = `Showing ${visibleCount} case stud${visibleCount !== 1 ? 'ies' : 'y'}`;
+                
+                if (activeFiltersList.length > 0) {
+                    const filterText = activeFiltersList.join(', ');
+                    summaryText += ` matching: ${filterText}`;
+                }
+                
+                this.resultsSummary.textContent = summaryText;
+            }
+        }
+
+        // Initialize the filter system when the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            new AccessibleProjectFilter();
+            
+            // Set initial ARIA states
+            document.querySelectorAll('.filter-tag').forEach(button => {
+                button.setAttribute('aria-pressed', 'false');
+                button.setAttribute('role', 'button');
+            });
+        });
+
+        // Add focus management for better keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            // Close modal with Escape key - WCAG 2.1.1
+            if (e.key === 'Escape' && document.getElementById('case-study-modal').classList.contains('active')) {
+                closeModal();
+            }
+        });
+
+        // Case Study Modal and Carousel System
+        let currentSlide = 0;
+        let currentCaseStudy = null;
+
+        const caseStudyData = {
+            'fraud-detection': {
+                title: 'Fraud Detection Algorithm Optimization',
+                subtitle: 'Machine Learning Pipeline for Financial Security',
+                slides: [
+                    {
+                        title: 'Challenge',
+                        content: `<p>A major financial institution was struggling with their fraud detection system, which had an unacceptably high false positive rate of 65%, causing customer frustration and operational inefficiency.</p>
+                        <div class="highlight-box">
+                            <strong>Problem:</strong> Existing rule-based system was flagging legitimate transactions as fraudulent, leading to poor customer experience and increased support costs.
+                        </div>`
+                    },
+                    {
+                        title: 'Research & Analysis',
+                        content: `<p>I conducted a comprehensive analysis of historical transaction data, customer behavior patterns, and existing detection rules to identify optimization opportunities.</p>
+                        <p><strong>Key Findings:</strong></p>
+                        <ul>
+                            <li>Geographic spending patterns were not properly weighted</li>
+                            <li>Time-based transaction analysis was too rigid</li>
+                            <li>Customer segmentation was insufficient</li>
+                        </ul>`
+                    },
+                    {
+                        title: 'Solution Development',
+                        content: `<p>Developed a machine learning pipeline using ensemble methods combining gradient boosting and neural networks, with real-time feature engineering.</p>
+                        <div class="highlight-box">
+                            <strong>Technical Approach:</strong> Python-based ML pipeline with real-time data processing, A/B testing framework, and continuous model retraining.
+                        </div>`
+                    },
+                    {
+                        title: 'Results',
+                        content: `<div class="metrics">
+                            <div class="metric">
+                                <span class="metric-value">40%</span>
+                                <span class="metric-label">Reduction in False Positives</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">99.2%</span>
+                                <span class="metric-label">Fraud Detection Accuracy</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">$2.3M</span>
+                                <span class="metric-label">Annual Savings</span>
+                            </div>
+                        </div>
+                        <p>The new system significantly improved customer satisfaction while maintaining high security standards.</p>`
+                    }
+                ]
+            },
+            'patient-portal': {
+                title: 'Patient Portal Usability Redesign',
+                subtitle: 'Human-Centered Design for Healthcare Technology',
+                slides: [
+                    {
+                        title: 'User Research',
+                        content: `<p>Conducted extensive user research with 45 patients across different age groups and technical comfort levels to understand pain points in the existing portal.</p>
+                        <div class="highlight-box">
+                            <strong>Methods:</strong> User interviews, task analysis, accessibility testing, and usability studies with diverse patient populations.
+                        </div>`
+                    },
+                    {
+                        title: 'Key Insights',
+                        content: `<p>Research revealed critical usability barriers that were preventing patients from effectively managing their healthcare online.</p>
+                        <div class="metrics">
+                            <div class="metric">
+                                <span class="metric-value">73%</span>
+                                <span class="metric-label">Task Abandonment Rate</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">12min</span>
+                                <span class="metric-label">Average Task Time</span>
+                            </div>
+                        </div>`
+                    },
+                    {
+                        title: 'Design & Development',
+                        content: `<p>Created a streamlined interface prioritizing the most common patient tasks: appointment scheduling, test results, and secure messaging.</p>
+                        <p>Built with React and Node.js, ensuring accessibility compliance and mobile responsiveness.</p>`
+                    },
+                    {
+                        title: 'Impact',
+                        content: `<div class="metrics">
+                            <div class="metric">
+                                <span class="metric-value">60%</span>
+                                <span class="metric-label">Improvement in Task Completion</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">4.2min</span>
+                                <span class="metric-label">New Average Task Time</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">85%</span>
+                                <span class="metric-label">Patient Satisfaction Score</span>
+                            </div>
+                        </div>`
+                    }
+                ]
+            },
+            'ab-testing': {
+                title: 'A/B Testing Platform Architecture',
+                subtitle: 'Scalable Experimentation Infrastructure',
+                slides: [
+                    {
+                        title: 'Platform Requirements',
+                        content: `<p>Product teams needed a robust experimentation platform to run concurrent A/B tests with statistical rigor and real-time monitoring.</p>
+                        <div class="highlight-box">
+                            <strong>Challenge:</strong> Support 50+ simultaneous experiments while maintaining statistical validity and avoiding interference between tests.
+                        </div>`
+                    },
+                    {
+                        title: 'Technical Architecture',
+                        content: `<p>Built a scalable platform using Python for statistical analysis and SQL for data processing, with real-time dashboards for experiment monitoring.</p>
+                        <p><strong>Key Features:</strong></p>
+                        <ul>
+                            <li>Automated sample size calculations</li>
+                            <li>Statistical significance monitoring</li>
+                            <li>Experiment isolation and traffic allocation</li>
+                        </ul>`
+                    },
+                    {
+                        title: 'Results & Impact',
+                        content: `<div class="metrics">
+                            <div class="metric">
+                                <span class="metric-value">50+</span>
+                                <span class="metric-label">Concurrent Experiments</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">300%</span>
+                                <span class="metric-label">Increase in Testing Velocity</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">15%</span>
+                                <span class="metric-label">Overall Conversion Improvement</span>
+                            </div>
+                        </div>`
+                    }
+                ]
+            },
+            'enterprise-workflow': {
+                title: 'Enterprise Workflow Analysis',
+                subtitle: 'Ethnographic Research for B2B System Design',
+                slides: [
+                    {
+                        title: 'Research Methodology',
+                        content: `<p>Conducted in-depth ethnographic research to understand complex B2B workflows across multiple departments and user roles.</p>
+                        <div class="highlight-box">
+                            <strong>Approach:</strong> 6-month embedded research study using ethnographic methods, contextual inquiry, and workflow mapping.
+                        </div>`
+                    },
+                    {
+                        title: 'System Redesign',
+                        content: `<p>Based on research insights, redesigned the enterprise system to better align with actual user workflows and mental models.</p>
+                        <p>Built with React to provide a responsive, intuitive interface that reduced cognitive load.</p>`
+                    },
+                    {
+                        title: 'Business Impact',
+                        content: `<div class="metrics">
+                            <div class="metric">
+                                <span class="metric-value">35%</span>
+                                <span class="metric-label">Reduction in Task Time</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">89%</span>
+                                <span class="metric-label">User Adoption Rate</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">$1.2M</span>
+                                <span class="metric-label">Annual Productivity Gains</span>
+                            </div>
+                        </div>`
+                    }
+                ]
+            },
+            'clinical-data': {
+                title: 'Clinical Data Pipeline Automation',
+                subtitle: 'Healthcare Analytics and Compliance',
+                slides: [
+                    {
+                        title: 'Challenge',
+                        content: `<p>Clinical trial data processing was taking 40 hours per study with high error rates, creating bottlenecks in research timelines.</p>
+                        <div class="highlight-box">
+                            <strong>Pain Points:</strong> Manual data entry, inconsistent formatting, compliance verification, and quality assurance delays.
+                        </div>`
+                    },
+                    {
+                        title: 'Automation Solution',
+                        content: `<p>Developed an automated pipeline using Python and SQL for data processing, with machine learning for quality assurance and anomaly detection.</p>
+                        <p><strong>Key Components:</strong></p>
+                        <ul>
+                            <li>Automated data validation and cleaning</li>
+                            <li>Compliance checking algorithms</li>
+                            <li>Real-time quality monitoring</li>
+                        </ul>`
+                    },
+                    {
+                        title: 'Impact',
+                        content: `<div class="metrics">
+                            <div class="metric">
+                                <span class="metric-value">95%</span>
+                                <span class="metric-label">Time Reduction (40h → 2h)</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">99.7%</span>
+                                <span class="metric-label">Data Accuracy</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">100%</span>
+                                <span class="metric-label">Compliance Rate</span>
+                            </div>
+                        </div>`
+                    }
+                ]
+            },
+            'investment-app': {
+                title: 'Investment App Onboarding Optimization',
+                subtitle: 'User Experience Research and Optimization',
+                slides: [
+                    {
+                        title: 'Research Phase',
+                        content: `<p>Combined user testing with multivariate experiments to understand onboarding friction points and optimization opportunities.</p>
+                        <div class="highlight-box">
+                            <strong>Methods:</strong> User journey mapping, usability testing, conversion funnel analysis, and multivariate testing.
+                        </div>`
+                    },
+                    {
+                        title: 'Optimization Strategy',
+                        content: `<p>Implemented a data-driven optimization approach using React and Node.js for rapid iteration and A/B testing capabilities.</p>
+                        <p>Focus areas included form simplification, progressive disclosure, and trust signal placement.</p>`
+                    },
+                    {
+                        title: 'Results',
+                        content: `<div class="metrics">
+                            <div class="metric">
+                                <span class="metric-value">45%</span>
+                                <span class="metric-label">Increase in Completion Rate</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">4.2/5</span>
+                                <span class="metric-label">User Satisfaction Score</span>
+                            </div>
+                            <div class="metric">
+                                <span class="metric-value">28%</span>
+                                <span class="metric-label">Reduction in Drop-off</span>
+                            </div>
+                        </div>`
+                    }
+                ]
+            }
+        };
+
+        function openModal(caseStudyId) {
+            currentCaseStudy = caseStudyData[caseStudyId];
+            if (!currentCaseStudy) return;
+
+            const modal = document.getElementById('case-study-modal');
+            const modalTitle = document.getElementById('modal-title');
+            const modalSubtitle = document.querySelector('.modal-subtitle');
+            
+            modalTitle.textContent = currentCaseStudy.title;
+            modalSubtitle.textContent = currentCaseStudy.subtitle;
+            
+            createSlides();
+            currentSlide = 0;
+            showSlide(0);
+            
+            modal.classList.add('active');
+            modal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+            
+            // Enhanced focus management - WCAG 2.1.2
+            trapFocusInModal(modal);
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('case-study-modal');
+            modal.classList.remove('active');
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = 'auto';
+            
+            // Return focus to the element that opened the modal
+            if (document.activeElement && document.activeElement.classList.contains('project-link')) {
+                document.activeElement.focus();
+            }
+        }
+
+        // Focus trapping for modal - WCAG 2.1.2 compliance
+        function trapFocusInModal(modal) {
+            const focusableElements = modal.querySelectorAll(
+                'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+            );
+            const firstFocusableElement = focusableElements[0];
+            const lastFocusableElement = focusableElements[focusableElements.length - 1];
+
+            // Focus the first element when modal opens
+            if (firstFocusableElement) {
+                firstFocusableElement.focus();
+            }
+
+            // Handle Tab and Shift+Tab to trap focus
+            modal.addEventListener('keydown', function(e) {
+                if (e.key === 'Tab') {
+                    if (e.shiftKey) {
+                        // Shift + Tab
+                        if (document.activeElement === firstFocusableElement) {
+                            lastFocusableElement.focus();
+                            e.preventDefault();
+                        }
+                    } else {
+                        // Tab
+                        if (document.activeElement === lastFocusableElement) {
+                            firstFocusableElement.focus();
+                            e.preventDefault();
+                        }
+                    }
+                }
+            });
+        }
+
+        function createSlides() {
+            const slidesContainer = document.getElementById('carousel-slides');
+            const indicatorsContainer = document.getElementById('slide-indicators');
+            
+            slidesContainer.innerHTML = '';
+            indicatorsContainer.innerHTML = '';
+            
+            currentCaseStudy.slides.forEach((slide, index) => {
+                // Create slide
+                const slideDiv = document.createElement('div');
+                slideDiv.className = 'carousel-slide';
+                slideDiv.innerHTML = `
+                    <div class="slide-content">
+                        <h4>${slide.title}</h4>
+                        ${slide.content}
+                    </div>
+                `;
+                slidesContainer.appendChild(slideDiv);
+                
+                // Create indicator
+                const indicator = document.createElement('button');
+                indicator.className = 'slide-indicator';
+                indicator.setAttribute('aria-label', `Go to slide ${index + 1}`);
+                indicator.onclick = () => showSlide(index);
+                indicatorsContainer.appendChild(indicator);
+            });
+        }
+
+        function showSlide(index) {
+            const slides = document.getElementById('carousel-slides');
+            const indicators = document.querySelectorAll('.slide-indicator');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            
+            currentSlide = index;
+            slides.style.transform = `translateX(-${index * 100}%)`;
+            
+            // Update indicators
+            indicators.forEach((indicator, i) => {
+                indicator.classList.toggle('active', i === index);
+            });
+            
+            // Update button states
+            prevBtn.disabled = index === 0;
+            nextBtn.disabled = index === currentCaseStudy.slides.length - 1;
+        }
+
+        function changeSlide(direction) {
+            const newIndex = currentSlide + direction;
+            if (newIndex >= 0 && newIndex < currentCaseStudy.slides.length) {
+                showSlide(newIndex);
+            }
+        }
+
+        // Close modal when clicking outside
+        document.addEventListener('click', (e) => {
+            const modal = document.getElementById('case-study-modal');
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
