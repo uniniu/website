@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Anastasia Hanan - Mixed Methods Researcher + Innovation Strategist specializing in research, design, and code.">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <title>Anastasia Hanan - Hyper Dimensional</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            overflow: hidden;
+            background: #0a0a0a;
+            font-family: 'Inter', sans-serif;
+            cursor: none;
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+        }
+        
+        /* Skip to main content link for accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #fff;
+            color: #000;
+            padding: 8px 16px;
+            text-decoration: none;
+            font-weight: 600;
+            z-index: 10000;
+            border-radius: 0 0 4px 0;
+        }
+        
+        .skip-link:focus {
+            top: 0;
+        }
+        
+        /* Glass navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+        }
+        
+        .nav-container {
+            max-width: none;
+            margin: 0;
+            padding: 20px 5% 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.95);
+            text-decoration: none;
+            letter-spacing: 0.02em;
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+        }
+        
+        .nav-logo:hover,
+        .nav-logo:focus {
+            color: rgba(255, 255, 255, 1);
+            outline: none;
+        }
+        
+        .nav-logo:focus-visible {
+            outline: 2px solid rgba(255, 255, 255, 0.5);
+            outline-offset: 4px;
+            border-radius: 4px;
+        }
+        
+        .nav-menu {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            padding-right: 2%;
+        }
+        
+        .nav-link {
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 8px 12px;
+            border-radius: 8px;
+            position: relative;
+            text-transform: uppercase;
+        }
+        
+        .nav-link:hover,
+        .nav-link:focus {
+            color: rgba(255, 255, 255, 1);
+            background: rgba(255, 255, 255, 0.08);
+            outline: none;
+        }
+        
+        .nav-link:focus-visible {
+            outline: 2px solid rgba(255, 255, 255, 0.5);
+            outline-offset: 2px;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 12px;
+            right: 12px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.9);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            border-radius: 2px;
+        }
+        
+        .nav-link:hover::after {
+            transform: scaleX(1);
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 16px 4% 16px 4%;
+                flex-wrap: wrap;
+                gap: 16px;
+            }
+            
+            .nav-logo {
+                font-size: 1.1rem;
+            }
+            
+            .nav-menu {
+                gap: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+                padding-right: 0;
+            }
+            
+            .nav-link {
+                font-size: 0.95rem;
+                padding: 6px 10px;
+            }
+            
+            .text-container {
+                left: 4%;
+                max-width: 92%;
+                top: 45%;
+            }
+            
+            .video-background {
+                left: 50%;
+                top: 45%;
+                width: 90%;
+            }
+            
+            .video-background video {
+                transform: translate(-50%, -50%) scale(1);
+            }
+            
+            .hyper, .dimensional {
+                font-size: clamp(2.5rem, 10vw, 12rem);
+                line-height: 1.15;
+            }
+            
+            .video-background {
+                top: 45%;
+                left: 50%;
+                width: 90%;
+                height: auto;
+            }
+            
+            .video-background video {
+                transform: translate(-50%, -50%) scale(1);
+                min-width: auto;
+                min-height: auto;
+                width: 100%;
+                height: auto;
+            }
+            
+            .bio-container {
+                padding: 24px 4%;
+            }
+            
+            .bio {
+                font-size: clamp(0.9rem, 1.3vw, 1.1rem);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .nav-container {
+                padding: 12px 3% 12px 3%;
+            }
+            
+            .nav-menu {
+                gap: 12px;
+            }
+            
+            .nav-link {
+                font-size: 0.9rem;
+            }
+            
+            .text-container {
+                left: 3%;
+                max-width: 94%;
+            }
+            
+            .video-background {
+                top: 45%;
+                left: 50%;
+                width: 85%;
+            }
+            
+            .video-background video {
+                transform: translate(-50%, -50%) scale(0.9);
+            }
+            
+            .hyper, .dimensional {
+                font-size: clamp(2rem, 9vw, 10rem);
+                line-height: 1.1;
+            }
+            
+            .bio-container {
+                padding: 20px 3%;
+            }
+            
+            .bio {
+                font-size: clamp(0.85rem, 1.2vw, 1rem);
+                line-height: 1.5;
+            }
+        }
+        
+        /* Landscape orientation on mobile */
+        @media (max-width: 896px) and (max-height: 500px) and (orientation: landscape) {
+            nav {
+                padding: 0;
+            }
+            
+            .nav-container {
+                padding: 12px 3%;
+            }
+            
+            .nav-logo {
+                font-size: 1rem;
+            }
+            
+            .nav-link {
+                font-size: 0.85rem;
+                padding: 4px 8px;
+            }
+            
+            .text-container {
+                top: 45%;
+                left: 3%;
+                max-width: 55%;
+            }
+            
+            .video-background {
+                top: 45%;
+                left: 50%;
+                width: 60%;
+            }
+            
+            .video-background video {
+                transform: translate(-50%, -50%) scale(0.7);
+            }
+            
+            .hyper, .dimensional {
+                font-size: clamp(1.25rem, 7vw, 5rem);
+                line-height: 1.05;
+            }
+            
+            .bio-container {
+                padding: 12px 3%;
+            }
+            
+            .bio {
+                font-size: clamp(0.65rem, 1vw, 0.85rem);
+                line-height: 1.3;
+            }
+            
+            .bio p {
+                margin: 0 0 0.4rem 0;
+            }
+            
+            .bio p:last-child {
+                margin-bottom: 0;
+            }
+        }
+        
+        /* Canvas background */
+        #canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            image-rendering: crisp-edges;
+        }
+        
+        /* Main content */
+        main {
+            position: relative;
+            z-index: 10;
+        }
+        
+        .text-container {
+            position: fixed;
+            top: 40%;
+            left: 5%;
+            transform: translateY(-50%);
+            z-index: 100;
+            text-align: left;
+            pointer-events: none;
+            max-width: 60%;
+        }
+        
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 50;
+            opacity: 0.6;
+            pointer-events: none;
+            mix-blend-mode: screen;
+            overflow: hidden;
+        }
+        
+        .video-background video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(1.25);
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: cover;
+        }
+        
+        .hyper {
+            font-family: 'Inter', sans-serif;
+            font-style: normal;
+            font-weight: bold;
+            font-size: clamp(3rem, 12vw, 16rem);
+            line-height: 1.2;
+            color: rgba(255, 255, 255, 0.95);
+            letter-spacing: 0.02em;
+            margin: 0;
+        }
+        
+        .dimensional {
+            font-family: 'Inter', sans-serif;
+            font-style: normal;
+            font-weight: bold;
+            font-size: clamp(3rem, 12vw, 16rem);
+            line-height: 1.2;
+            color: rgba(255, 255, 255, 0.95);
+            letter-spacing: 0.02em;
+            margin: 0;
+        }
+        
+        .bio-container {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.15);
+            padding: 32px 5%;
+            pointer-events: auto;
+        }
+        
+        .bio {
+            font-family: 'Inter', sans-serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: clamp(0.95rem, 1.5vw, 1.25rem);
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.85);
+            max-width: 65ch; /* Optimal reading width: 60-70 characters */
+            margin: 0;
+        }
+        
+        .bio p {
+            margin: 0 0 1rem 0;
+        }
+        
+        .bio p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .bio a {
+            color: rgba(255, 255, 255, 0.95);
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 2px;
+            transition: all 0.3s ease;
+            pointer-events: auto;
+        }
+        
+        .bio a:hover,
+        .bio a:focus {
+            color: rgba(255, 255, 255, 1);
+            text-decoration-thickness: 2px;
+            outline: none;
+        }
+        
+        .bio a:focus-visible {
+            outline: 2px solid rgba(255, 255, 255, 0.5);
+            outline-offset: 3px;
+            border-radius: 2px;
+        }
+        
+        .custom-cursor {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.6);
+            pointer-events: none;
+            z-index: 10001;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease;
+            opacity: 0;
+        }
+        
+        .custom-cursor.visible {
+            opacity: 1;
+        }
+        
+        /* Screen reader only text */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip to main content for keyboard users -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Navigation -->
+    <nav role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <a href="/" class="nav-logo" aria-label="Anastasia Hanan home">
+                Anastasia Hanan
+            </a>
+            
+            <ul class="nav-menu" id="main-menu" role="menubar">
+                <li role="none">
+                    <a href="/vibes" class="nav-link" role="menuitem">
+                        Vibes
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Main content -->
+    <main id="main-content">
+        <canvas id="canvas" aria-hidden="true" role="presentation"></canvas>
+        
+        <div class="video-background" aria-hidden="true">
+            <video id="bg-video" autoplay loop muted playsinline webkit-playsinline preload="metadata" loading="lazy">
+                <source src="Video_Loop_Adjustment_Request.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        
+        <header class="text-container" role="banner">
+            <h1>
+                <span class="hyper">Hyper</span>
+                <span class="dimensional">Dimensional</span>
+            </h1>
+        </header>
+        
+        <footer class="bio-container">
+            <div class="bio">
+                <p>Research + Design + Code. I love what I do and building great teams.</p>
+                <p>I'm a Mixed Methods Researcher + Innovation Strategist with over 10 years of facilitation, end-to-end implementation, experiment design, and consulting expertise across startup, enterprise, and civic tech.</p>
+                <p>Please <a href="#" id="contact-link">contact</a> me for portfolio or find me on <a href="https://www.linkedin.com/in/anastasiahanan/" target="_blank" rel="noopener noreferrer">LinkedIn</a>.</p>
+            </div>
+        </footer>
+    </main>
+    
+    <div class="custom-cursor" aria-hidden="true"></div>
+
+    <script>
+        // Obfuscated email - assembled on click to prevent spam bot scraping
+        document.getElementById('contact-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            const user = 'anastasia.hanan';
+            const domain = 'protonmail.com';
+            window.location.href = 'mailto:' + user + '@' + domain;
+        });
+        
+        // Set video to super slow playback and force play on mobile
+        const bgVideo = document.getElementById('bg-video');
+        if (bgVideo) {
+            bgVideo.playbackRate = 0.3; // 30% speed - super slow and dreamy
+            
+            // Force play for mobile browsers
+            bgVideo.play().catch(err => {
+                console.log('Video autoplay prevented:', err);
+                // Try playing on user interaction
+                document.addEventListener('touchstart', () => {
+                    bgVideo.play();
+                }, { once: true });
+            });
+        }
+        
+        // WebGL Particle System
+        const canvas = document.getElementById('canvas');
+        const gl = canvas.getContext('webgl2', { 
+            alpha: true,
+            antialias: false,
+            powerPreference: 'high-performance'
+        }) || canvas.getContext('webgl', {
+            alpha: true,
+            antialias: false,
+            powerPreference: 'high-performance'
+        });
+        const cursor = document.querySelector('.custom-cursor');
+        
+        if (!gl) {
+            console.warn('WebGL not supported - particles disabled');
+            // Graceful degradation - page still works without particles
+        } else {
+            // Only initialize particles if WebGL is available
+            
+        let width = window.innerWidth;
+        let height = window.innerHeight;
+        let particles = [];
+        let mouseX = -9999; // Off-screen - no interaction on load
+        let mouseY = -9999; // Off-screen - no interaction on load
+        let time = 0;
+        
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        const particleSize = isMobile ? 6 : 8;
+        const gridSpacing = isMobile ? 10 : 12;
+        const influenceRadius = isMobile ? 120 : 180;
+        
+        canvas.width = width;
+        canvas.height = height;
+        gl.viewport(0, 0, width, height);
+        
+        // Vertex shader
+        const vertexShaderSource = `
+            attribute vec2 a_position;
+            attribute vec2 a_basePosition;
+            attribute float a_scale;
+            attribute float a_saturation;
+            attribute float a_lightness;
+            attribute float a_opacity;
+            attribute float a_hue;
+            
+            uniform vec2 u_resolution;
+            uniform float u_particleSize;
+            
+            varying float v_scale;
+            varying float v_saturation;
+            varying float v_lightness;
+            varying float v_opacity;
+            varying float v_hue;
+            varying vec2 v_uv;
+            
+            void main() {
+                vec2 clipSpace = (a_position / u_resolution) * 2.0 - 1.0;
+                clipSpace.y *= -1.0;
+                
+                gl_Position = vec4(clipSpace, 0.0, 1.0);
+                gl_PointSize = u_particleSize * a_scale;
+                
+                v_scale = a_scale;
+                v_saturation = a_saturation;
+                v_lightness = a_lightness;
+                v_opacity = a_opacity;
+                v_hue = a_hue;
+            }
+        `;
+        
+        // Fragment shader
+        const fragmentShaderSource = `
+            precision mediump float;
+            
+            varying float v_scale;
+            varying float v_saturation;
+            varying float v_lightness;
+            varying float v_opacity;
+            varying float v_hue;
+            
+            vec3 hsl2rgb(float h, float s, float l) {
+                float c = (1.0 - abs(2.0 * l - 1.0)) * s;
+                float x = c * (1.0 - abs(mod(h / 60.0, 2.0) - 1.0));
+                float m = l - c / 2.0;
+                
+                vec3 rgb;
+                if (h < 60.0) rgb = vec3(c, x, 0.0);
+                else if (h < 120.0) rgb = vec3(x, c, 0.0);
+                else if (h < 180.0) rgb = vec3(0.0, c, x);
+                else if (h < 240.0) rgb = vec3(0.0, x, c);
+                else if (h < 300.0) rgb = vec3(x, 0.0, c);
+                else rgb = vec3(c, 0.0, x);
+                
+                return rgb + m;
+            }
+            
+            void main() {
+                vec2 coord = gl_PointCoord * 2.0 - 1.0;
+                float dist = length(coord);
+                
+                vec2 absCoord = abs(coord);
+                float roundedSquare = max(absCoord.x, absCoord.y);
+                float cornerRadius = 0.35;
+                float squareDist = roundedSquare - (1.0 - cornerRadius);
+                float corner = length(max(absCoord - (1.0 - cornerRadius), 0.0));
+                float shape = mix(squareDist, corner, step(1.0 - cornerRadius, roundedSquare));
+                
+                float alpha_shape = 1.0 - smoothstep(-0.1, 0.15, shape);
+                if (alpha_shape < 0.01) discard;
+                
+                float centerDist = length(coord);
+                float glow = 1.0 - smoothstep(0.0, 1.2, centerDist);
+                glow = pow(glow, 0.8);
+                
+                float angle = atan(coord.y, coord.x);
+                float colorShift = sin(angle * 2.0 + centerDist * 3.14159) * 0.5 + 0.5;
+                
+                float hue1 = v_hue - 20.0 + colorShift * 40.0;
+                float hue2 = v_hue + 20.0 - colorShift * 40.0;
+                
+                float baseSat = v_saturation * 0.8;
+                float baseLit = v_lightness + 0.15;
+                
+                vec3 color1 = hsl2rgb(hue1, baseSat, baseLit + glow * 0.15);
+                vec3 color2 = hsl2rgb(hue2, baseSat, baseLit + glow * 0.1);
+                vec3 color = mix(color1, color2, colorShift);
+                
+                float softHighlight = pow(1.0 - centerDist, 3.0) * 0.2;
+                color += vec3(softHighlight) * v_saturation;
+                
+                float outerGlow = exp(-centerDist * 2.0) * 0.15;
+                color += vec3(outerGlow) * hsl2rgb(v_hue, v_saturation * 0.5, 0.7);
+                
+                float alpha = v_opacity * alpha_shape * glow;
+                
+                gl_FragColor = vec4(color, alpha);
+            }
+        `;
+        
+        function compileShader(source, type) {
+            const shader = gl.createShader(type);
+            gl.shaderSource(shader, source);
+            gl.compileShader(shader);
+            
+            if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+                console.error('Shader compile error:', gl.getShaderInfoLog(shader));
+                gl.deleteShader(shader);
+                return null;
+            }
+            return shader;
+        }
+        
+        const vertexShader = compileShader(vertexShaderSource, gl.VERTEX_SHADER);
+        const fragmentShader = compileShader(fragmentShaderSource, gl.FRAGMENT_SHADER);
+        const program = gl.createProgram();
+        gl.attachShader(program, vertexShader);
+        gl.attachShader(program, fragmentShader);
+        gl.linkProgram(program);
+        
+        if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+            console.error('Program link error:', gl.getProgramInfoLog(program));
+        }
+        
+        gl.useProgram(program);
+        
+        const positionLocation = gl.getAttribLocation(program, 'a_position');
+        const scaleLocation = gl.getAttribLocation(program, 'a_scale');
+        const saturationLocation = gl.getAttribLocation(program, 'a_saturation');
+        const lightnessLocation = gl.getAttribLocation(program, 'a_lightness');
+        const opacityLocation = gl.getAttribLocation(program, 'a_opacity');
+        const hueLocation = gl.getAttribLocation(program, 'a_hue');
+        const resolutionLocation = gl.getUniformLocation(program, 'u_resolution');
+        const particleSizeLocation = gl.getUniformLocation(program, 'u_particleSize');
+        
+        gl.uniform2f(resolutionLocation, width, height);
+        gl.uniform1f(particleSizeLocation, particleSize);
+        
+        gl.enable(gl.BLEND);
+        gl.blendFunc(gl.SRC_ALPHA, gl.ONE);
+        
+        class Particle {
+            constructor(x, y, index, total) {
+                this.baseX = x;
+                this.baseY = y;
+                this.currentX = x;
+                this.currentY = y;
+                this.targetX = x;
+                this.targetY = y;
+                
+                this.scale = 1;
+                this.targetScale = 1;
+                this.currentScale = 1;
+                
+                const position = index / total;
+                this.baseHue = position * 280 + 140;
+                this.baseSaturation = 0.35;
+                this.baseLightness = 0.45;
+                
+                this.saturation = this.baseSaturation;
+                this.lightness = this.baseLightness;
+                this.opacity = 0;
+                this.targetOpacity = 0.7;
+            }
+            
+            update(mouseX, mouseY) {
+                const dx = mouseX - this.baseX;
+                const dy = mouseY - this.baseY;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                if (distance < influenceRadius) {
+                    const force = Math.pow(1 - distance / influenceRadius, 1.5);
+                    const angle = Math.atan2(dy, dx);
+                    
+                    const pullStrength = force * 25;
+                    this.targetX = this.baseX + Math.cos(angle) * pullStrength;
+                    this.targetY = this.baseY + Math.sin(angle) * pullStrength;
+                    
+                    this.targetScale = 1 + force * 1.8;
+                    this.saturation = this.baseSaturation + force * 0.3;
+                    this.lightness = this.baseLightness + force * 0.2;
+                    this.targetOpacity = 0.7 + force * 0.3;
+                } else {
+                    this.targetX = this.baseX;
+                    this.targetY = this.baseY;
+                    this.targetScale = 1;
+                    this.saturation = this.baseSaturation;
+                    this.lightness = this.baseLightness;
+                    this.targetOpacity = 0.7;
+                }
+                
+                this.currentX += (this.targetX - this.currentX) * 0.15;
+                this.currentY += (this.targetY - this.currentY) * 0.15;
+                this.currentScale += (this.targetScale - this.currentScale) * 0.15;
+                this.opacity += (this.targetOpacity - this.opacity) * 0.05;
+            }
+        }
+        
+        function initParticles() {
+            particles = [];
+            // Extend grid beyond viewport to prevent edge cutoff
+            const margin = gridSpacing * 2;
+            const cols = Math.ceil((width + margin * 2) / gridSpacing);
+            const rows = Math.ceil((height + margin * 2) / gridSpacing);
+            const offsetX = -margin;
+            const offsetY = -margin;
+            
+            let index = 0;
+            const total = cols * rows;
+            
+            for (let i = 0; i < cols; i++) {
+                for (let j = 0; j < rows; j++) {
+                    const x = i * gridSpacing + offsetX;
+                    const y = j * gridSpacing + offsetY;
+                    particles.push(new Particle(x, y, index, total));
+                    index++;
+                }
+            }
+        }
+        
+        const positionBuffer = gl.createBuffer();
+        const scaleBuffer = gl.createBuffer();
+        const saturationBuffer = gl.createBuffer();
+        const lightnessBuffer = gl.createBuffer();
+        const opacityBuffer = gl.createBuffer();
+        const hueBuffer = gl.createBuffer();
+        
+        function animate() {
+            gl.clearColor(0.04, 0.04, 0.04, 1.0);
+            gl.clear(gl.COLOR_BUFFER_BIT);
+            
+            time++;
+            
+            particles.forEach(particle => {
+                particle.update(mouseX, mouseY);
+            });
+            
+            const positions = new Float32Array(particles.length * 2);
+            const scales = new Float32Array(particles.length);
+            const saturations = new Float32Array(particles.length);
+            const lightnesses = new Float32Array(particles.length);
+            const opacities = new Float32Array(particles.length);
+            const hues = new Float32Array(particles.length);
+            
+            particles.forEach((particle, i) => {
+                positions[i * 2] = particle.currentX;
+                positions[i * 2 + 1] = particle.currentY;
+                scales[i] = particle.currentScale;
+                saturations[i] = particle.saturation;
+                lightnesses[i] = particle.lightness;
+                opacities[i] = particle.opacity;
+                hues[i] = particle.baseHue;
+            });
+            
+            gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+            gl.bufferData(gl.ARRAY_BUFFER, positions, gl.DYNAMIC_DRAW);
+            gl.enableVertexAttribArray(positionLocation);
+            gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0);
+            
+            gl.bindBuffer(gl.ARRAY_BUFFER, scaleBuffer);
+            gl.bufferData(gl.ARRAY_BUFFER, scales, gl.DYNAMIC_DRAW);
+            gl.enableVertexAttribArray(scaleLocation);
+            gl.vertexAttribPointer(scaleLocation, 1, gl.FLOAT, false, 0, 0);
+            
+            gl.bindBuffer(gl.ARRAY_BUFFER, saturationBuffer);
+            gl.bufferData(gl.ARRAY_BUFFER, saturations, gl.DYNAMIC_DRAW);
+            gl.enableVertexAttribArray(saturationLocation);
+            gl.vertexAttribPointer(saturationLocation, 1, gl.FLOAT, false, 0, 0);
+            
+            gl.bindBuffer(gl.ARRAY_BUFFER, lightnessBuffer);
+            gl.bufferData(gl.ARRAY_BUFFER, lightnesses, gl.DYNAMIC_DRAW);
+            gl.enableVertexAttribArray(lightnessLocation);
+            gl.vertexAttribPointer(lightnessLocation, 1, gl.FLOAT, false, 0, 0);
+            
+            gl.bindBuffer(gl.ARRAY_BUFFER, opacityBuffer);
+            gl.bufferData(gl.ARRAY_BUFFER, opacities, gl.DYNAMIC_DRAW);
+            gl.enableVertexAttribArray(opacityLocation);
+            gl.vertexAttribPointer(opacityLocation, 1, gl.FLOAT, false, 0, 0);
+            
+            gl.bindBuffer(gl.ARRAY_BUFFER, hueBuffer);
+            gl.bufferData(gl.ARRAY_BUFFER, hues, gl.DYNAMIC_DRAW);
+            gl.enableVertexAttribArray(hueLocation);
+            gl.vertexAttribPointer(hueLocation, 1, gl.FLOAT, false, 0, 0);
+            
+            gl.drawArrays(gl.POINTS, 0, particles.length);
+            
+            requestAnimationFrame(animate);
+        }
+        
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            cursor.classList.add('visible'); // Show cursor on first move
+        });
+        
+        if (!isMobile) {
+            document.body.style.cursor = 'none';
+        } else {
+            cursor.style.display = 'none';
+        }
+        
+        // Touch support for mobile - both drag and burst effect
+        let touchTimeout;
+        let isDragging = false;
+        
+        document.addEventListener('touchstart', (e) => {
+            if (e.touches.length > 0) {
+                isDragging = false;
+                mouseX = e.touches[0].clientX;
+                mouseY = e.touches[0].clientY;
+            }
+        });
+        
+        document.addEventListener('touchmove', (e) => {
+            if (e.touches.length > 0) {
+                isDragging = true;
+                mouseX = e.touches[0].clientX;
+                mouseY = e.touches[0].clientY;
+                
+                // Clear any existing timeout when dragging
+                if (touchTimeout) clearTimeout(touchTimeout);
+            }
+        });
+        
+        document.addEventListener('touchend', (e) => {
+            // If it was a tap (not a drag), create burst effect
+            if (!isDragging && touchTimeout) {
+                clearTimeout(touchTimeout);
+            }
+            
+            // Reset after 500ms
+            touchTimeout = setTimeout(() => {
+                mouseX = -9999;
+                mouseY = -9999;
+            }, 500);
+        });
+        
+        document.addEventListener('click', (e) => {
+            if (isMobile) {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+                
+                // Clear existing timeout
+                if (touchTimeout) clearTimeout(touchTimeout);
+                
+                // Reset after 500ms for burst effect
+                touchTimeout = setTimeout(() => {
+                    mouseX = -9999;
+                    mouseY = -9999;
+                }, 500);
+            }
+        });
+        
+        window.addEventListener('resize', () => {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+            gl.viewport(0, 0, width, height);
+            gl.uniform2f(resolutionLocation, width, height);
+            initParticles();
+        });
+        
+        initParticles();
+        animate();
+        
+        } // End WebGL conditional
+    </script>
+</body>
+</html>
